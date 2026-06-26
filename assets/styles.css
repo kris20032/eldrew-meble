@@ -343,11 +343,8 @@ section{padding-block:clamp(64px,8vw,128px)}
 .gallery .reveal:nth-child(5){transition-delay:.28s}
 .gallery .reveal:nth-child(6){transition-delay:.35s}
 
-/* 2) Hero — powolny „oddech kadru" (Ken Burns), tylko desktop (bateria) */
-@keyframes heroBreath{from{transform:scale(1.06)}to{transform:scale(1.12) translateY(-1.2%)}}
-@media(min-width:900px){
-  .hero-cine>img{transform:scale(1.06);animation:heroBreath 24s ease-in-out infinite alternate}
-}
+/* 2) Hero STATYCZNY — Ken Burns (heroBreath) WYŁĄCZONY 26.06: ruch tła hero
+   (zoom + translateY) odbierany jako defekt w sprzedaży (zgłoszenie Szymona, ElDrew). */
 
 /* 3) Akcentowy hairline pod nagłówkiem sekcji, który „rysuje się" przy wejściu */
 .head h2{position:relative;padding-bottom:18px}
