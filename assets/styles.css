@@ -343,8 +343,16 @@ section{padding-block:clamp(64px,8vw,128px)}
 .gallery .reveal:nth-child(5){transition-delay:.28s}
 .gallery .reveal:nth-child(6){transition-delay:.35s}
 
-/* 2) Hero STATYCZNY — Ken Burns (heroBreath) WYŁĄCZONY 26.06: ruch tła hero
-   (zoom + translateY) odbierany jako defekt w sprzedaży (zgłoszenie Szymona, ElDrew). */
+/* 2) Hero — Ken Burns POPRAWNY (czysty powolny zoom od środka, BEZ translateY).
+   Historia 26.06: stary wariant miał translateY(-1.2%) → widoczny dryf GÓRA-DÓŁ
+   = skarga „hero lata/rusza się". Poprawny KB (jak działające gastro/studio):
+   sam scale, transform-origin center, wolno, desktop-only, respektuje reduced-motion.
+   ZASADA: Ken Burns = TYLKO scale (zoom). Nigdy translateY/translateX w pętli hero. */
+@keyframes heroBreath{from{transform:scale(1.05)}to{transform:scale(1.12)}}
+@media(min-width:900px){
+  .hero-cine>img{transform-origin:center;will-change:transform;backface-visibility:hidden;
+    animation:heroBreath 30s ease-out infinite alternate}
+}
 
 /* 3) Akcentowy hairline pod nagłówkiem sekcji, który „rysuje się" przy wejściu */
 .head h2{position:relative;padding-bottom:18px}
